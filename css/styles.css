@@ -177,6 +177,40 @@ body{
   .seal-img { display:none; }
 }
 
+/* === 轻量：更多纸纹与颗粒（CSS-only） === */
+body::before{
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.18;
+  background-image:
+    radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.006) 0px, rgba(0,0,0,0.006) 1px, transparent 1px, transparent 8px),
+    linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0) 40%);
+  background-size: 6px 6px, 100% 120px, 100% 320px;
+  filter: contrast(1.04);
+}
+/* 更明显的墨晕/水渍伪元素 */
+body::after{
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  left: -6%;
+  bottom: -4%;
+  width: 46%;
+  height: 46%;
+  z-index: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.14), transparent 18%),
+              radial-gradient(circle at 80% 80%, rgba(0,0,0,0.08), transparent 12%);
+  opacity: 0.75;
+  transform: rotate(-12deg);
+  mix-blend-mode: overlay;
+  filter: blur(2px);
+}
+
 /* 响应式 */
 @media (max-width:640px){
   .site-title{font-size:1.6rem}
