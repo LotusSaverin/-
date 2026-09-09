@@ -10,3 +10,42 @@
   text-indent: 0;
   margin-bottom: 1.2em;
 }
+
+/* 恢复温和纸纹与柔和墨渍（无渐变） */
+body{
+  background: var(--paper);
+  background-image: radial-gradient(rgba(0,0,0,0.01) 1px, transparent 1px);
+  background-size: 6px 6px;
+  background-repeat: repeat;
+  filter: contrast(1.01) saturate(0.98);
+}
+
+body::before{
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  mix-blend-mode: normal;
+  opacity: 0.10; /* 轻微纸纹叠加 */
+  background-image: radial-gradient(rgba(0,0,0,0.008) 1px, transparent 1px);
+  background-size: 6px 6px;
+  background-repeat: repeat;
+  filter: contrast(1.00);
+}
+
+body::after{
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  left: -6%;
+  bottom: -4%;
+  width: 40%;
+  height: 40%;
+  z-index: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(0,0,0,0.04), transparent 18%);
+  opacity: 0.30; /* 非常柔和的墨渍点缀 */
+  transform: rotate(-12deg);
+  mix-blend-mode: normal;
+  filter: blur(1px);
+}
